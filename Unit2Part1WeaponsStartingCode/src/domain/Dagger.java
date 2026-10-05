@@ -51,16 +51,4 @@ public class Dagger extends Weapon {
 	public int getTotalDamage() {
 		return getBaseDamage() + this.damageModifier;
 	}
-
-	@Override
-	public int compareTo(Weapon that) {
-		if (this.getTotalDamage() > that.getTotalDamage()) {
-			return 1;
-		} else if (this.getTotalDamage() < that.getTotalDamage()) {
-			return -1;
-		} else {
-			return 0;
-		}
-	}
-
 }

@@ -1,13 +1,13 @@
 package driver;
 
 import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.Date;
 import domain.Dagger;
 import domain.Sword;
 import domain.Weapon;
 import external.DamageCompare;
-import external.NameCompare;
 
 /**
  * Demonstrates the creation, storage, and sorting of weapon objects.
@@ -53,8 +53,7 @@ public class Driver {
 		}
 
 		System.out.println("\nAfter sorting by name: ");
-		NameCompare nc = new NameCompare();
-		Collections.sort(inventory, nc);
+		Collections.sort(inventory);
 		for (Weapon w : inventory) {
 			System.out.println("\t" + w.getName() + " " + w.getTotalDamage());
 		}

@@ -14,8 +14,7 @@ public class DamageCompare implements Comparator<Weapon> {
 		} else if (w1.getTotalDamage() < w2.getTotalDamage()) {
 			return -1;
 		} else {
-			return 0;
-			// return w1.getName().compareTo(w2.getName());
+			return w1.getName().compareTo(w2.getName());
 		}
 	}
 }

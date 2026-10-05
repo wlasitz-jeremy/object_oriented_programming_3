@@ -57,5 +57,13 @@ public abstract class Weapon implements Comparable<Weapon> {
 	public abstract int getTotalDamage();
 
 	@Override
-	public abstract int compareTo(Weapon that);
+	public int compareTo(Weapon that) {
+		if (this.getTotalDamage() > that.getTotalDamage()) {
+			return 1;
+		} else if (this.getTotalDamage() < that.getTotalDamage()) {
+			return -1;
+		} else {
+			return this.getName().compareTo(that.getName());
+		}
+	}
 }
