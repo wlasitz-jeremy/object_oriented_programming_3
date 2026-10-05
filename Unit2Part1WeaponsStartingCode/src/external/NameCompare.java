@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import domain.Weapon;
 
-public class NameCompare implements Comparator<Weapon>{
+public class NameCompare implements Comparator<Weapon> {
 
 	@Override
 	public int compare(Weapon w1, Weapon w2) {
