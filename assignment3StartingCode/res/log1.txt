@@ -1,0 +1,10 @@
+QTR-4821 File not found. Please verify the path and try again.
+ZLD-1934 Access denied. You do not have permission to perform this action.
+KXP-7752 Connection timeout while attempting to reach the server.
+MNB-6048 Invalid user input detected. Please check your data and retry.
+RTA-9123 Unable to save file due to insufficient disk space.
+HGF-3387 Network error occurred. Please check your connection.
+PLK-7710 Operation failed due to unexpected system error.
+QTR-4821 File not found. Please verify the path and try again.
+CVD-2054 Resource not available. Try again later.
+ZLD-1934 Access denied. You do not have permission to perform this action.
