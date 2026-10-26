@@ -16,20 +16,19 @@ public class Counter implements CounterADT{
 
 	@Override
 	public void setCounter(int count) throws InvalidCounterException {
-		// TODO Auto-generated method stub
+		if (count < 0) throw new InvalidCounterException();
 		this.counter = count;
 	}
 
 	@Override
 	public void incCounter() {
-		// TODO Auto-generated method stub
-		
+		this.counter++;
 	}
 
 	@Override
 	public void decCounter() throws InvalidCounterException {
-		// TODO Auto-generated method stub
-		
+		if (this.counter == 0) throw new InvalidCounterException();
+		this.counter--;
 	}
 
 	@Override
@@ -39,9 +38,11 @@ public class Counter implements CounterADT{
 
 	@Override
 	public boolean isZero() {
-		// TODO Auto-generated method stub
+		if (this.counter == 0) return true;
 		return false;
 	}
 
-	
+	public String toString() {
+		return "Counter value is: " + this.counter;
+	}
 }
