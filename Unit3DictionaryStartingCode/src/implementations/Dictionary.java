@@ -42,81 +42,34 @@ public class Dictionary implements DictionaryADT
      * in {@link #keys}.
      */
     private ArrayList<Integer> values;
-    
-    private static final int DEFAULT_CAPACITY = 10;
-    
-   
 
-    public void create(int size) {
+	@Override
+	public void create(int size) {
 		// TODO Auto-generated method stub
-		if (size <= 0) {
-			size = DEFAULT_CAPACITY;
-		}
-		keys = new ArrayList<>(size);
-		values = new ArrayList<>(size);
 		
 	}
- 
+
 	@Override
 	public boolean insert(String key, Integer value) throws DuplicateKeyException {
 		// TODO Auto-generated method stub
-		if (keys.contains(key) || values.contains(value)) {
-			throw new DuplicateKeyException();
-		}
-		if (key == null || value == null) {
-			throw new NullPointerException();
-		}
-		keys.add(key);
-		values.add(value);
-		return true;
+		return false;
 	}
 
 	@Override
 	public Integer remove(String key) {
 		// TODO Auto-generated method stub
-		 int i = this.keys.indexOf(key);
- 
-	        if (key == null) {
-	            throw new NullPointerException("Value cannot be negative.");
-	        }
- 
-	        if (i == -1) {
-	            return null;
-	        }
- 
-	        Integer removedValue = this.values.get(i);
- 
-	        this.keys.remove(i);
-	        this.values.remove(i);
- 
-	        return removedValue;
-	    }
- 
+		return null;
+	}
+
 	@Override
 	public boolean update(String key, Integer value) {
 		// TODO Auto-generated method stub
-		int i = this.keys.indexOf(key);
- 
-	       if (key == null || value == null) {
-	           throw new NullPointerException("Value cannot be negative.");
-	       }
-	       if (i == -1) {
-	           return false;
-	       }
-	       this.values.set(i, value);
-	       return true;
-	    }
-	
+		return false;
+	}
+
 	@Override
 	public Integer lookup(String key) {
 		// TODO Auto-generated method stub
-		if (key == null) {
-			throw new NullPointerException();
-		}
-		if(keys.contains(key)) {
-			int i = keys.indexOf(key);
-			return values.get(i);
-		}
 		return null;
 	}
 

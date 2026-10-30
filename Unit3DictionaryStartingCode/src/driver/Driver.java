@@ -27,7 +27,7 @@ public class Driver
         // Run specific test classes
         Result result = JUnitCore.runClasses( DictionaryTest.class );
 
-		System.out.println( "Jeremy Wlasitz! " + new Date() );
+		System.out.println( "Hello Kitty! " + new Date() );
 		
         // Print details of any failed tests
         for( Failure failure : result.getFailures() ) 
