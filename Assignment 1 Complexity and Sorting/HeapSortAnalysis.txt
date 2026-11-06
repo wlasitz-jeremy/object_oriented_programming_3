@@ -1,0 +1,79 @@
+Assignment 1: Heap Sort Analysis
+
+Chosen sorting algorithm: Heap Sort
+Sorting direction: Descending order according to the supplied Comparator
+
+Algorithm description
+
+Heap Sort stores a binary heap in the same array as the products. For an item at index i, its left child is at index 2i + 1 and its right child is at index 2i + 2. The algorithm first rearranges the array into a min-heap. A min-heap places the smallest item, according to the Comparator, at its root. It then swaps that root with the last item in the active heap, reduces the active heap by one, and restores the heap property. Repeating this step places smaller items at later indexes, leaving the full array in descending order.
+
+The Comparator is used for every ordering decision. A negative comparison means the first product belongs earlier in ascending Comparator order. Heap Sort chooses the smaller child with that rule and does not reverse the array after sorting.
+
+Pseudocode
+
+HEAP-SORT-DESCENDING(products, comparator)
+    n = length(products)
+
+    // Build a min-heap from the last parent up to the root.
+    for root = floor(n / 2) - 1 down to 0
+        HEAPIFY(products, n, root, comparator)
+
+    // Move the current minimum to the end of the active heap.
+    for end = n - 1 down to 1
+        swap products[0] and products[end]
+        HEAPIFY(products, end, 0, comparator)
+
+HEAPIFY(products, heapSize, root, comparator)
+    smallest = root
+    left = 2 * root + 1
+    right = 2 * root + 2
+
+    if left < heapSize and comparator.compare(products[left], products[smallest]) < 0
+        smallest = left
+
+    if right < heapSize and comparator.compare(products[right], products[smallest]) < 0
+        smallest = right
+
+    if smallest is not root
+        swap products[root] and products[smallest]
+        HEAPIFY(products, heapSize, smallest, comparator)
+
+Operation-count analysis
+
+Let n be the number of products and let h = floor(log2 n), the maximum height of the heap.
+
+1. Building the heap
+
+The array has at most floor(n / 2) parent nodes. HEAPIFY is called once for each parent, starting with the lowest parents and ending at the root. A node at height k can move down at most k levels. Each level performs at most two Comparator comparisons, a constant number of index and boundary checks, and at most one swap. A swap uses one temporary product variable and three reference assignments.
+
+The number of nodes at height k is no greater than floor(n / 2^(k + 1)). Thus, the total comparisons while building the heap are bounded by:
+
+    2 * sum over k from 0 to h of (k * floor(n / 2^(k + 1)))
+
+This sum grows linearly with n, so heap construction takes O(n) time. The number of swaps in this phase is also O(n).
+
+2. Removing products from the heap
+
+There are n - 1 extraction passes. Each pass swaps the root with the last item in the active heap, using three reference assignments, then calls HEAPIFY on the smaller heap. HEAPIFY travels down at most h levels. Each level makes no more than two Comparator comparisons and may make one swap, using three reference assignments.
+
+An upper bound for the extraction comparisons is:
+
+    2 * (n - 1) * floor(log2 n)
+
+An upper bound for extraction swaps is:
+
+    (n - 1) + (n - 1) * floor(log2 n)
+
+The first term counts root-to-end swaps; the second bounds swaps made while restoring the heap. Therefore extraction takes O(n log n) time.
+
+3. Total time
+
+Heap construction takes O(n), and the extraction phase takes O(n log n). The extraction phase dominates for large n, so the total running time is O(n log n). The algorithm performs heap construction and extraction for every input arrangement, giving O(n log n) best-case, average-case, and worst-case time for this implementation.
+
+4. Extra space
+
+The array is rearranged in place. Swapping uses one temporary Product reference, which is O(1) extra data storage. HEAPIFY is recursive and can reach a depth of at most h, so its call stack uses O(log n) space. Therefore this recursive implementation uses O(log n) auxiliary space. An iterative HEAPIFY could reduce the call-stack space to O(1).
+
+Additional property
+
+Heap Sort is not stable: products with equal comparison values may change their relative order because the algorithm swaps items across the array.
